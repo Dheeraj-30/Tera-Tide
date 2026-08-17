@@ -1,0 +1,26 @@
+
+ We are making this website for Indian aritsans so make sure of it
+
+Hey what i want to do in this project and i will tell u that by telling u what i notice :
+
+-> first of all in Navbar there is search bar and profile which i want working now problem is that there is another search Discovery page so tell me what can we do or we can leave both for same purpose and 2nd thing about the profile means login should we place a button and after login then show this profile picture or what to do , and i want the authentication to authentic using auth tool which verify the gmail properly .
+
+-> Another thing at which step did the we tell user to sign up or make profile 
+
+-> Second thing is about footer how we deal with the explore portion and Social is not much problem as we can simply give our links of social handles Should we add icons of them or simple is better
+
+-> Then we have our Discover page , first thing is where did the Start exploring will lead us .
+
+-> Then we have to make the search option working again
+
+-> Then add a proper map according to the user location and make the small card on bottom of map as dynamic on the basis of distance
+
+-> Most importantly from where we get all the data required for this means google maps api is sufficient or how we will proceed.
+
+-> Third thing is workshops in which currently we on Hand-thrown masterclass but where is workshop main page means will it show all the workshops then we select and apply filters like ceramics here then we get options of classes or craftperson who provide workshops or simply we connect it with the discovery search that led us to workshops but i dont think it is much clean and professional way
+
+-> Rest thing in workshop is done when user select the shop then we get content pic of owner and pricing , pics of shops and all the information and then we can book now accordingly
+
+-> Fourth thing is marketplace like we have to make cart option working too and payment gateway too or cash on delivery option . Rest suggest me in this section which makes website working and professional
+
+-> Then similarly we have to make Dashobaord of the user working like itenaory order history etc.

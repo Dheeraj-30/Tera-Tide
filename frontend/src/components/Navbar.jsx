@@ -1,0 +1,48 @@
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; // <-- Import the hook
+
+const Navbar = () => {
+  const { getCartCount } = useCart(); // <-- Get the cart count function
+
+  return (
+    <nav className="sticky top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto bg-background/80 backdrop-blur-md shadow-sm">
+      <div className="font-headline-lg text-3xl md:text-4xl font-bold text-primary tracking-tight">
+        <Link to="/">Terra & Tide</Link>
+      </div>
+      <div className="hidden md:flex gap-gutter items-center">
+        <Link to="/" className="font-label-md text-label-md text-secondary hover:text-primary transition-colors hover:bg-surface-container-low px-3 py-2 rounded-lg">
+          Discovery
+        </Link>
+        <Link to="/workshops" className="font-label-md text-label-md text-secondary hover:text-primary transition-colors hover:bg-surface-container-low px-3 py-2 rounded-lg">
+          Workshops
+        </Link>
+        <Link to="/marketplace" className="font-label-md text-label-md text-secondary hover:text-primary transition-colors hover:bg-surface-container-low px-3 py-2 rounded-lg">
+          Marketplace
+        </Link>
+      </div>
+      
+      {/* Updated Icons Section */}
+      <div className="flex items-center gap-4">
+        <button aria-label="Search" className="text-secondary hover:text-primary transition-colors">
+          <span className="material-symbols-outlined">search</span>
+        </button>
+        
+        {/* Cart Icon with Badge */}
+        <button aria-label="Cart" className="relative text-secondary hover:text-primary transition-colors p-2 rounded-full active:scale-95 duration-150">
+          <span className="material-symbols-outlined">shopping_cart</span>
+          {getCartCount() > 0 && (
+            <span className="absolute top-0 right-0 bg-primary-container text-on-primary text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+              {getCartCount()}
+            </span>
+          )}
+        </button>
+
+        <Link to="/auth" aria-label="User profile" className="text-secondary hover:text-primary transition-colors hover:bg-surface-container-low p-2 rounded-full active:scale-95 duration-150 ease-in-out">
+          <span className="material-symbols-outlined">account_circle</span>
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
