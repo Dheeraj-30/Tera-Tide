@@ -1,19 +1,27 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String }, // Optional because Google OAuth users won't have a password
-  googleId: { type: String }, // Stores the Google Auth ID
-  role: { 
-    type: String, 
-    enum: ['traveler', 'artisan', 'admin'], 
-    default: 'traveler' 
-  },
-  profilePicture: { type: String },
-  // Artisan specific fields (only filled if role is 'artisan')
-  bio: { type: String },
-  location: { type: String } // e.g., "Jaipur, Rajasthan"
+  password: { type: String, required: true },
+  role: { type: String, enum: ['user', 'artisan', 'admin'], default: 'user' },
+  googleId: { type: String }
 }, { timestamps: true });
 
-export default mongoose.model('User', userSchema);
+// Hash the password before saving to the database
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Method to compare entered password with the hashed password in the database
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+const User = mongoose.model('User', userSchema);
+export default User;

@@ -88,7 +88,7 @@ const importData = async () => {
         price: 120,
         category: 'Textiles',
         stockQuantity: 5,
-       images: ['https://images.unsplash.com/photo-1584346733221-5079a49938b8?q=80&w=800&auto=format&fit=crop']
+       images: ['https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop']
       }
     ]);
 
