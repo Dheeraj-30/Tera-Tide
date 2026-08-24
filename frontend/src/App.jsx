@@ -174,6 +174,7 @@
 
 
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer'; 
 import Discovery from './pages/Discovery';
@@ -191,6 +192,19 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
+
+      {/* 2. Add the Toaster right here at the top of your layout */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#4a3b32', // Matches your earthy aesthetic
+            color: '#fff',
+          },
+        }}
+      />
+      
       <Navbar />
       
       <main className="flex-grow">

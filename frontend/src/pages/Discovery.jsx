@@ -1,74 +1,86 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Discovery = () => {
   return (
-    <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex-grow">
-      {/* Hero Section */}
-      <section className="py-stack-lg mt-stack-sm mb-stack-lg">
-        <div className="relative w-full h-[614px] min-h-[400px] rounded-xl overflow-hidden card-shadow">
-          <div 
-            className="absolute inset-0 bg-cover bg-center" 
-            style={{ backgroundImage: "url('home_img.jpg')" }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-on-background/80 via-on-background/30 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full md:w-2/3">
-            <span className="inline-block px-3 py-1 mb-4 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm tracking-widest uppercase">
-              Cultural Immersion
-            </span>
-            <h1 className="font-headline-xl text-headline-xl text-on-primary mb-4">
-              Connect with the Heart of the Local Culture
-            </h1>
-            <p className="font-body-lg text-body-lg text-surface-bright/90 mb-8 max-w-xl">
-              Discover authentic craftsmanship, meet master artisans, and learn centuries-old techniques in intimate, hands-on workshops.
-            </p>
-            <button className="bg-primary-container text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg hover:opacity-90 transition-opacity active:scale-95 shadow-sm inline-flex items-center gap-2">
-              Start Exploring
-              <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>arrow_forward</span>
-            </button>
+    <div className="flex flex-col w-full min-h-screen">
+      
+      {/* 1. Hero Section */}
+      <section className="relative w-full h-[70vh] min-h-[500px] flex items-center justify-center text-center px-6">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=2070&auto=format&fit=crop" 
+            alt="Artisanal pottery" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col items-center gap-6 max-w-3xl">
+          <h1 className="text-5xl md:text-7xl text-white font-serif tracking-tight">
+            Crafted for the <br className="hidden md:block"/> Cultural Traveler.
+          </h1>
+          <p className="text-lg md:text-xl text-stone-200 font-light max-w-xl">
+            Discover hand-crafted goods and immersive artisan workshops from masters of their craft.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
+            <Link 
+              to="/marketplace" 
+              className="px-8 py-4 bg-amber-800 text-white rounded-xl font-medium hover:bg-amber-900 transition-colors shadow-lg"
+            >
+              Shop Marketplace
+            </Link>
+            <Link 
+              to="/workshops" 
+              className="px-8 py-4 bg-white/10 text-white backdrop-blur-md border border-white/30 rounded-xl font-medium hover:bg-white/20 transition-colors shadow-lg"
+            >
+              Book a Workshop
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Find Artisans Nearby Map  */}
-      <section className="mb-stack-lg">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-stack-md gap-4">
-          <div>
-            <h2 className="font-headline-lg text-headline-lg text-on-surface mb-2">Find Artisans Nearby</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">Explore workshops and studios in your current location.</p>
+      {/* 2. Featured Pillars Section */}
+      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          
+          <div className="flex flex-col gap-6">
+            <span className="text-amber-800 font-semibold tracking-wider uppercase text-sm">Our Philosophy</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-stone-900 leading-tight">
+              Preserving heritage, <br/> one piece at a time.
+            </h2>
+            <p className="text-stone-600 text-lg leading-relaxed">
+              Every item in our marketplace tells a story of generations of skill. By connecting you directly with master artisans, we ensure that traditional techniques survive and thrive in the modern world.
+            </p>
+            <Link to="/about" className="text-amber-800 font-medium hover:underline flex items-center gap-2 w-fit mt-2">
+              Read our full story
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
           </div>
-          <div className="relative w-full md:w-auto">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-            <input 
-              className="w-full md:w-80 pl-10 pr-4 py-3 rounded-lg border border-outline-variant bg-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-shadow outline-none font-body-md text-body-md" 
-              placeholder="Search locations or crafts..." 
-              type="text" 
-            />
-          </div>
-        </div>
-        <div className="w-full h-[400px] rounded-xl overflow-hidden card-shadow relative bg-surface-container-high border border-outline-variant/30 flex items-center justify-center">
-           {/* Map Placeholder  */}
-          <img 
-            className="w-full h-full object-cover opacity-80" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuARQlp7qJR4bmNB3y5yXmP5yB9p2XcH0GtBeYBcYE4QPtpIAztpU3PDkxU5H7keU7Pjl3yNv0Z9RuVjuse0Xi9RolErMO7WgP4Uuw6Ib9IM4lHEHbXyNLP_8gwzySI1BvCbjCFIV5EmCYt6RQsTRIWZL-HeKc2FDngJD5FmVOyZ-mIXQqcnfFLhDo0qu947-sEb9rgQDAAJqbfVRoa-r8zDlPxghMnwuGgT7f7OXTTiw5GWT7b9O4Cpdw" 
-            alt="Map showing artisan locations" 
-          />
-           {/* Example Map UI overlay  */}
-          <div className="absolute bottom-6 left-6 right-6 md:right-auto md:w-80 bg-surface rounded-xl p-4 card-shadow flex gap-4 items-center">
+
+          <div className="grid grid-cols-2 gap-4">
+            {/* Image 1: Traditional Loom & Weaving */}
             <img 
-              className="w-16 h-16 rounded-lg object-cover" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKfWIagNaDz7T1F8Ugbx75HOijGm5q4LgryxLre4PE_iGNMgIsJU3_lGnQUInOcR3jutlbLihdGavxyIlkmQJT7MpL8Bk2B41vI5UkmFPnxXFlgZMrgaMmz7paHXrraR5RkSL_5zDgZfDSpszLfTHc29fZmULhCH3gkZlPCUhlwuVknJBSvdVshHM_tfvTahQg0z_3L94ue4spVmpD5PvGlkEOxGvrIB8N99ZEFuZzgEIk9--UQY3OFQ" 
-              alt="Mateo's Ceramic Studio" 
+              src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Traditional textile weaving" 
+              className="w-full h-64 object-cover rounded-2xl shadow-md"
             />
-            <div>
-              <h3 className="font-label-md text-label-md font-semibold text-on-surface">Mateo's Ceramic Studio</h3>
-              <p className="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
-                <span className="material-symbols-outlined text-[14px]">location_on</span> 1.2 km away
-              </p>
-            </div>
+            
+            {/* Image 2: Earthy Handcrafted Ceramics */}
+            <img 
+              src="https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="Handcrafted ceramic vases" 
+              className="w-full h-64 object-cover rounded-2xl shadow-md mt-8"
+            />
           </div>
+
         </div>
       </section>
-    </main>
+
+    </div>
   );
 };
 

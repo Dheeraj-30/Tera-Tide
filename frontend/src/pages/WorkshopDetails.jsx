@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import toast from 'react-hot-toast';
 
 const WorkshopDetails = () => {
   // 1. Get the dynamic ID from the URL
@@ -229,7 +230,8 @@ const WorkshopDetails = () => {
             <button 
               onClick={() => {
                 if (!selectedDate) {
-                  alert('Please select a date for your workshop first!');
+                  // alert('Please select a date for your workshop first!');
+                  toast.error('Please select a date for your workshop first!');
                   return;
                 }
 
@@ -242,8 +244,10 @@ const WorkshopDetails = () => {
                 };
                 
                 addToCart(workshopCartItem, guestCount); 
-                alert(`Added ${guestCount} ticket(s) for ${workshop.title} on ${selectedDate} to your cart!`);
+                // alert(`Added ${guestCount} ticket(s) for ${workshop.title} on ${selectedDate} to your cart!`);
+                toast.success(`Added ${guestCount} ticket(s) to your cart!`);
               }}
+
               className="w-full bg-primary-container text-on-primary py-4 rounded-xl font-label-lg text-label-lg hover:bg-primary transition-colors mt-2 shadow-sm"
             >
               Book Experience

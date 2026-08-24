@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import toast from 'react-hot-toast';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -114,7 +115,8 @@ const ProductDetails = () => {
             <button 
               onClick={() => {
                 addToCart(product, quantity);
-                alert(`Added ${quantity} ${product.name} to your cart!`);
+                // alert(`Added ${quantity} ${product.name} to your cart!`);
+                toast.success(`Added ${quantity} ${product.name} to your cart!`);
               }}
               className="w-full bg-primary-container text-on-primary py-4 rounded-xl font-label-lg text-label-lg hover:bg-primary transition-colors flex justify-center items-center gap-2"
             >

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext'; // Import Auth to get the token!
+import toast from 'react-hot-toast';
 
 const Cart = () => {
   const { cartItems, clearCart } = useCart();
@@ -14,7 +15,8 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     if (!user) {
-      alert('Please log in to place an order!');
+      // alert('Please log in to place an order!');
+      toast.error('Please log in to place an order!');
       navigate('/auth');
       return;
     }
@@ -42,16 +44,19 @@ const Cart = () => {
       });
 
       if (response.ok) {
-        alert('Order placed successfully!');
+        // alert('Order placed successfully!');
+        toast.success('Order placed successfully! 🎉');
         clearCart(); // Empty the cart
         navigate('/dashboard'); // Send them to see their new order
       } else {
         const errorData = await response.json();
-        alert(`Checkout failed: ${errorData.message}`);
+        // alert(`Checkout failed: ${errorData.message}`);
+        toast.error(`Checkout failed: ${errorData.message}`);
       }
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('An error occurred during checkout.');
+      // alert('An error occurred during checkout.');
+      toast.error('An error occurred during checkout.');
     }
   };
 
